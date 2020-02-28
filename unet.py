@@ -162,6 +162,7 @@ if __name__ == '__main__':
     model = myunet.get_unet()
     # model.summary()
     # plot_model(model, to_file='model.png')
-    myunet.load_model_weights(model)
+    # Uncomment the below line if you want to re-train a previously trained model 
+    # myunet.load_model_weights(model)
     myunet.train()
     myunet.save_img()
