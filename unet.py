@@ -129,7 +129,7 @@ class myUnet(object):
         print('Fitting model...')
         model.fit(imgs_train, imgs_mask_train, batch_size=4, epochs=100, verbose=1,
                   validation_split=0.2, shuffle=True, callbacks=[model_checkpoint])
-
+        model.save_weights('./unet_model.hdf5')
         print('predict test data')
         imgs_mask_test = model.predict(imgs_test, batch_size=1, verbose=1)
         np.save('./data/results/imgs_mask_test.npy', imgs_mask_test)
@@ -154,7 +154,7 @@ class myUnet(object):
             cv2.imwrite(path, cv_save)
             
     def load_model_weights(self, model):
-        model.load_weights('./data/unet.hdf5')
+        model.load_weights('./unet_model.hdf5')
 
 
 if __name__ == '__main__':
